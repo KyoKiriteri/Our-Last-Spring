@@ -6,6 +6,9 @@ TagManager:
   tags:
   - AreaCode
   - CamPoint
+  - TPZ
+  - TPX
+  - TPY
   layers:
   - Default
   - TransparentFX

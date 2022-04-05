@@ -5,12 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Controller values")]
-    [SerializeField] private CharacterController playerCtrlr;
+    public CharacterController playerCtrlr;
     [Space(10)]
     [Tooltip("Modify the base speed of the player")]
     [SerializeField] private float speed = 0.0f;
     [Tooltip("Modify the 'sprint' modifier effect")]
     [SerializeField] private float sprint = 1.0f;
+
+    public static PlayerController playerScript;
 
     private void Awake()
     {
