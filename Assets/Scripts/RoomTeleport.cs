@@ -10,6 +10,12 @@ public class RoomTeleport : MonoBehaviour
     [SerializeField] private bool nearDoor;
     public string nameCollect;
 
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+        FaderScript fD = GameObject.FindGameObjectWithTag("Fader").GetComponent<FaderScript>();
+    }
+
     // Update is called once per frame
     private void Update()
     {
@@ -17,17 +23,36 @@ public class RoomTeleport : MonoBehaviour
         {
             if (nameCollect == "CLS_TP_Corridor")
             {
-                player.GetComponent<CharacterController>().enabled = false;
-                player.transform.position = tpEnd.transform.position;
-                player.GetComponent<CharacterController>().enabled = true;
+                StartCoroutine(TransitionCLSCo());
+                
             }
             else if (nameCollect == "CLS_TP_CLS")
             {
-                player.GetComponent<CharacterController>().enabled = false;
-                player.transform.position = tpStart.transform.position;
-                player.GetComponent<CharacterController>().enabled = true;
+                StartCoroutine(TransitionCorCo());
             }
         }
+    }
+
+    public IEnumerator TransitionCLSCo()
+    {
+        FaderScript fd = GameObject.FindGameObjectWithTag("Fader").GetComponent<FaderScript>();
+        yield return StartCoroutine(fd.FadeAni());
+
+        new WaitForSeconds(1);
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = tpEnd.transform.position;
+        player.GetComponent<CharacterController>().enabled = true;
+    }
+
+    public IEnumerator TransitionCorCo()
+    {
+        FaderScript fd = GameObject.FindGameObjectWithTag("Fader").GetComponent<FaderScript>();
+        yield return StartCoroutine(fd.FadeAni());
+
+        new WaitForSeconds(1);
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = tpStart.transform.position;
+        player.GetComponent<CharacterController>().enabled = true;
     }
 
     public void OnTriggerEnter(Collider other)

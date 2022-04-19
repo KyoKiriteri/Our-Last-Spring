@@ -4,11 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - AreaCode
   - CamPoint
-  - TPZ
-  - TPX
-  - TPY
+  - Fader
   layers:
   - Default
   - TransparentFX

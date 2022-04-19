@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey("left shift"))
         {
-            sprint = 2.0f;
+            sprint = 1.5f;
         }
         else
         {

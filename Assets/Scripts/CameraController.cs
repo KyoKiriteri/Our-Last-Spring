@@ -29,19 +29,7 @@ public class CameraController : MonoBehaviour
             }
         }
 
-        transform.rotation = tMin.transform.rotation;
-        float yRotation = tMin.transform.eulerAngles.y;
-        player.transform.eulerAngles = new Vector3(0, yRotation);
 
-        //if (tMin == camPoints[8])
-        //{
-        //    // Change the [] whenever you add new camPoints!!!
-        //    transform.rotation = camPoints[8].rotation;
-        //}
-        //else
-        //{
-        //    //transform.rotation = // make an origin point with only x rot 45
-        //}
         transform.position = Vector3.Lerp(transform.position, tMin.position, Time.deltaTime * camSpeed);
     } 
 }
